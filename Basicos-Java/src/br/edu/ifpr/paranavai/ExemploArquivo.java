@@ -9,12 +9,22 @@ import java.util.Scanner;
 public class ExemploArquivo {
 
 	public static void main(String[] args) {
+		//A classe File pertence a biblioteca padrao do Java e serve como referencia para manipularmos arquivos
 		File arquivo = new File("numeros.txt");
+		
+		//List eh uma interface do Java para estruturas de dados do tipo lista.
+		//Existem varias implementacoes de List, sendo ArrayList uma das mais utilizadas.
+		//Toda lista deve informar o tipo de valor que pode armazenar. Neste caso, armazenamos valores do tipo Integer.
 		List<Integer> numeros = new ArrayList<Integer>();
 		
+		//A classe Scanner é responsavel por fazer a leitura do conteudo de um arquivo
+		//Os comandos try e catch sao responsaveis por tratar possiveis erros que podem acontecer ao realizar a leitura do arquivo.
 		try {
 			
 			Scanner scanner = new Scanner(arquivo);
+			//O metodo hasNextLine verifica se o arquivo possui uma proxima linha para ser lida
+			//Cada vez que o metodo nextLine eh chamado, um ponteiro avança para a proxima linha disponivel
+			//Isso eh feito ate que se chegue no final do arquivo, o que vai fazer com que o while termine.
 			while (scanner.hasNextLine()) {
 				String numeroStr = scanner.nextLine();
 				adicionaNumeroALista(numeros, numeroStr);
@@ -32,6 +42,9 @@ public class ExemploArquivo {
 	}
 
 	private static void adicionaNumeroALista(List<Integer> numeros, String numeroStr) {
+		//Aqui tentamos converter uma String para int
+		//Se a conversao ocorrer com sucesso, adicionamos o numero inteiro a lista numeros.
+		//Caso a conversao falhe, nos mostramos uma mensagem de erro no console.
 		try {
 			int numero = Integer.parseInt(numeroStr);
 			numeros.add(numero);
